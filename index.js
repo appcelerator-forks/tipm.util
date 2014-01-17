@@ -87,7 +87,7 @@ function arrayToHash(array) {
 function formatArray(ctx, value, recurseTimes, visibleKeys, keys) {
   var output = [];
   for (var i = 0, l = value.length; i < l; ++i) {
-    if (hasOwnProperty(value, String(i))) {
+    if (Object.prototype.hasOwnProperty.call(value, String(i))) {
       output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
           String(i), true));
     } else {
@@ -117,7 +117,7 @@ function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
       str = ctx.stylize('[Setter]', 'special');
     }
   }
-  if (!hasOwnProperty(visibleKeys, key)) {
+  if (!Object.prototype.hasOwnProperty.call(visibleKeys, key)) {
     name = '[' + key + ']';
   }
   if (!str) {
